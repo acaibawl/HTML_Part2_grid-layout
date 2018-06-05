@@ -41,6 +41,19 @@ a:link, a:visited, a:hover, a:active {
 .item .image {
     display: block;
     width: 100%;
+    min-height: 109px;
+}
+.item-m {
+    width: 364px;
+}
+.item-m .image {
+    min-height: 146px;
+}
+.item-l {
+    width: 732px;
+}
+.item-l .image{
+    min-height: 403px;
 }
 .item .category {
     margin: 15px 9px 10px;
@@ -78,7 +91,6 @@ a:link, a:visited, a:hover, a:active {
     margin: 10px;
     line-height: 1.5;
 }
-
 /*
 #########################
 a要素をitem要素のサイズに広げるよう、
@@ -97,9 +109,42 @@ marginの部分をpaddingに変更している
     box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.3);
     opacity: 0.8;
 }
-.item-m {
-    width: 364px;
+.header {
+    padding: 25px;
+    border-bottom: none;
+    text-align: center;
 }
-.item-l {
-    width: 732px;
+.logo {
+    width: 136px;
+    height: 136px;
+    transition: -webkit-transform 2s;
+    transition: transform 2s ease-in-out;
+}
+.logo:hover {
+    -webkit-transform: rotate(720deg);
+    transform: rotate(720deg);
+}
+.nav {
+    margin: 35px auto 10px;
+}
+.nav-item {
+    margin-top: 20px;
+    text-align: center;
+    letter-spacing:1px;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.nav-item a {
+    display: inline-block;
+}
+.nav-item a::after {
+    content: "";
+    display: block;
+    width: 0;
+    margin: 6px auto 0;
+    border-bottom: 1px solid #7C5119;
+    transition: width 0.3s ease-in-out;
+}
+.nav-item a:hover::after {
+    width: 100%;
 }
