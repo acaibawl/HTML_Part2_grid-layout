@@ -31,12 +31,14 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .item {
+    position: relative;
     width: 180px;
     margin-bottom: 4px;
     padding: 8px;
     border-bottom: 3px solid;
     border-radius: 5px;
     background-color: #fff;
+    overflow: hidden;
 }
 .item .image {
     display: block;
@@ -99,16 +101,81 @@ marginの部分をpaddingに変更している
 */
 .item > a {
     display: block;
+    position: relative;
     margin: -8px -8px -11px;
     padding: 8px 8px 11px;
     border-radius: inherit;
     color: #777;
     transition: all 0.3s;
 }
+
 .item > a:hover {
     box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.3);
     opacity: 0.8;
 }
+
+/*###################MOREを表示させる##########*/
+.item > a::after {
+    content: "MORE";
+    position: absolute;
+    display: block;
+    height: 30px;
+    width: 100px;
+    top: 43.5px;
+    left: 150%;
+    margin-left: -50px;
+    font-size: 1.6rem;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 3px;
+    color: #fff;
+    border: 3px solid;
+    border-radius: 5px;
+    font-family: "Trebuchet MS", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+/*    z-index: 1;*/
+    
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+.item.item-m > a::after {
+    top: 62px;
+}
+.item.item-l > a::after {
+    top: 190.5px;
+}
+.item > a:hover::after {
+    left: 50%;
+    opacity: 1;
+}
+
+
+/*####画像部分に半透明の黒い要素を被せる#######*/
+.item > a::before {
+    display:block;
+    content: "";
+    position: absolute;
+    height: 109px;
+/*    width: 164px;*/
+    right: 8px;
+    top: 8px;
+    left: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+.item.item-m > a::before {
+/*    width: 348px;*/
+    height: 146px;
+}
+.item.item-l > a::before {
+/*    width: 716px;*/
+    height: 403px;
+}
+.item > a:hover::before {
+    opacity: 1;
+}
+/*↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑*/
+
 .header {
     padding: 25px;
     border-bottom: none;
