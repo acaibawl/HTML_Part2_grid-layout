@@ -37,11 +37,16 @@ a:link, a:visited, a:hover, a:active {
     border-bottom: 3px solid;
     border-radius: 5px;
     background-color: #fff;
+    overflow: hidden;
 }
 .item .image {
     display: block;
     width: 100%;
     min-height: 109px;
+    position: relative;
+}
+.item .image img {
+    width: 100%;
 }
 .item-m {
     width: 364px;
@@ -55,6 +60,49 @@ a:link, a:visited, a:hover, a:active {
 .item-l .image{
     min-height: 403px;
 }
+/*#########画像部分に網掛け############*/
+.item > a .image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 1px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+.item > a:hover .image::before {
+    opacity: 1;
+}
+
+/*#############MOREを表示############*/
+.item > a .image::after {
+    content: 'MORE';
+    position: absolute;
+    top: 50%;
+    left: 150%;
+    width: 100px;
+    margin-top: -19px;
+    margin-left: -50px;
+    padding: 8px;
+    border: 3px solid #fff;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 1.6rem;
+    font-family: "Trebuchet MS", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+.item > a:hover .image::after {
+    opacity: 1;
+    left: 50%;
+}
+
+
+
+
 .item .category {
     margin: 15px 9px 10px;
     color: #aaa;
